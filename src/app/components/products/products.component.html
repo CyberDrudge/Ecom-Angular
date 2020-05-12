@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row my-2">
+        <div class="col" *ngFor="let product of productsList; let i=index">
+            <div class="card rounded my-1" style="width: 18rem;">
+                <div class="card-body rounded">
+                    <h5 class="card-title"> {{ product.title }} </h5>
+                    <p class="card-text"> {{ product.description }} </p>
+                    <a class="btn btn-primary" routerLink="/products/{{product.slug}}" routerLinkActive="active">View</a>
+                    <app-add-remove-product [product]="product" [cartItems]="cartItems"></app-add-remove-product>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

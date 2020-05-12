@@ -1,0 +1,11 @@
+<span class='submit-span' (click)="updateCart(product.id)">
+    <li *ngIf="isProductInCart;then inCart else addToCart"></li>
+    <ng-template #inCart>
+        In cart <button type='submit' class='btn btn-link'>Remove?</button>
+    </ng-template>
+    <ng-template #addToCart>
+        <button class="btn btn-success my-3">
+            Add to Cart
+        </button>
+    </ng-template>
+</span>
