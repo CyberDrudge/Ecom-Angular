@@ -32,6 +32,7 @@ export class AuthService {
   }
 
   login_api(login: string, pass: string) {
+    localStorage.clear();
     return this.httpClient.post<{ type: string; data: any }>(
       `${this.apiURL}/login`,
       { email: login, password: pass }

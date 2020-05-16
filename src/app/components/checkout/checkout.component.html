@@ -1,0 +1,22 @@
+<ng-container  *ngIf="!isCheckoutDone else checkoutDone">
+    <h1>Finalize Checkout</h1>
+    <p>Cart Items: 
+        <ng-container *ngFor="let product of checkoutDetails.cart.products">
+            {{ product }}
+        </ng-container>
+    </p>
+    <p>Shipping Address: {{ checkoutDetails.shipping_address.address_line1 }}</p>
+    <p>Billing Address: {{ checkoutDetails.shipping_address.address_line1 }}</p>
+    <!-- <p>Payment Method: {{ billing_profile.default_card }} (<a href="{{ billing_profile.get_payment_method_url }}?next={{ request.build_absolute_uri }}">Change</a>)</p> -->
+    <p>Cart Total: {{ checkoutDetails.cart.total }}</p>
+    <p>Shipping Total: {{ checkoutDetails.shipping_total }}</p>
+    <p>Order Total: {{ checkoutDetails.total }}</p>
+
+    <button class='btn btn-success' (click)=(checkout())>Checkout</button>
+</ng-container>
+
+<ng-template #checkoutDone>
+    <div class="col-6 mx-auto py-5 text-center">
+        <h1 class="display-1">Thank you for ordering!!!</h1>
+    </div>
+</ng-template>
