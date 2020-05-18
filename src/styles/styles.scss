@@ -2,3 +2,10 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+@import './variables';
+
+body {
+    background: rgba(0, 118, 197, 0.315);
+    color: $primary;
+}
+  
