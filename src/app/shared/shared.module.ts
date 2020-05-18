@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CommonModule } from '@angular/common';
 import { FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { Routes, RouterModule } from '@angular/router';
@@ -13,6 +15,8 @@ import { LoginComponent } from './login/login.component';
     LoginComponent
   ],
   imports: [
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
     CommonModule,
     ReactiveFormsModule,
     RouterModule

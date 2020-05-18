@@ -1,8 +1,9 @@
 <div class="container">
-    <div>
-        <h2 class="pull-left">LOGIN</h2>
-        <div class="info-1 pull-right info pointer"><span class="sub-title">or
-            </span>create account</div>
+    <div class="login-header">
+        <h2 class="float-left my-0">LOGIN</h2>
+        <div class="float-right create-account">
+            Create Account
+        </div>
     </div>
     <form [formGroup]="loginForm" (ngSubmit)="login()">
         <input formControlName="login" class="form-control"
@@ -11,18 +12,17 @@
         <input formControlName="password" class="form-control"
             [ngClass]="{ 'is-invalid': submitted && f.password.errors }" type="password" required
             placeholder="Password">
-        <div class="text-center">
-            <input class="privacy-policy" type="checkbox">
-            <span class="sub-title">Keep me logged in
-            </span>
+        <div class="my-1">
+            <input type="checkbox" formControlName="keep_logged_in">
+            <span class="sub-title"> Keep me logged in</span>
         </div>
-        <button class="width-100 mt-20" type="submit" nz-button nzType="primary">
-            <span *ngIf="isLoggingIn"><img class="auth_loader" src="./assets/images/loader2.gif"></span>
+        <button type="submit" [disabled]="!loginForm.valid">
+            <span *ngIf="isLoggingIn"><img class="auth_loader" src="./assets/gifs/loader2.gif"></span>
             <span>Login</span>
         </button>
     </form>
-    <div class="mt-20 text-center">
-        <span class="info-1 warning pointer">Forgot password?</span>
+    <div class="mt-20 text-right secondary">
+        <span class="warning">Forgot password?</span>
         <p *ngIf="submitted && loginForm.invalid" class="color-error animated slideInUp">Invalid details!</p>
     </div>
 </div>

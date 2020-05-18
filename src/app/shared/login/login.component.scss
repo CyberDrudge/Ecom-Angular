@@ -1,0 +1,26 @@
+@import 'src/styles/variables';
+
+.auth_loader {
+    height: 20px;
+    padding-right: 10px;
+}
+
+.container{
+    padding: 20px 100px 20px 100px;
+}
+
+.create-account{
+    align-self: flex-end;
+    margin-left: auto;
+    color: $secondary;
+}
+
+.login-header{
+    display: flex;
+    margin-bottom: 0px;
+}
+
+.secondary{
+    color: $secondary;
+}
+

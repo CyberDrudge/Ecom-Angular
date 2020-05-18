@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HeaderComponent implements OnInit {
   @Input() title: string;
   @Input() isUserLoggedIn: boolean;
-  isCollapsed: boolean = true;
-  constructor() { }
+
+  constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
   }
