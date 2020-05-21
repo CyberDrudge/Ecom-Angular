@@ -7,7 +7,6 @@ import { CartService } from '../../services/cart/cart.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cart: any;
 
   constructor(public cartService: CartService) { }
 
@@ -16,14 +15,11 @@ export class CartComponent implements OnInit {
   }
 
   getCartItems(){
-    this.cartService.getCartitems().subscribe(res => {
+    this.cartService.getCartItems().subscribe(res => {
       if (res.type == 'success'){
-        this.cart = res.data;
-      } else {
-        this.cart = null;
+        this.cartService.cart = res.data;
       }
-      localStorage.setItem("cart_id", JSON.stringify(this.cart.id));
-      localStorage.setItem("cart", JSON.stringify(this.cart));
+      localStorage.setItem("cart_id", JSON.stringify(this.cartService.cart.id));
       this.cartService.isCartLoading = false;
     })
   }

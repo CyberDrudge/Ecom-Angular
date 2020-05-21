@@ -8,19 +8,30 @@ import { environment } from 'src/environments/environment';
 export class CartService {
   private apiURL: string = environment.apiUrl;
   isCartLoading: boolean = false;
+  cart: any = [];
   updateCartUrl: string = '/cart/update';
 
   constructor(private httpClient: HttpClient) { }
 
-  public getCartitems = () => {
-    this.isCartLoading = true;
+  getCartItems = () => {
     let cart_id = JSON.parse(localStorage.getItem("cart_id"));
     return this.httpClient.post<any>(
       `${this.apiURL}/cart/`, {'cart_id': cart_id}
     );
   };
 
-  public updateCart(id: string){
+  // public getCart = () => {
+  //   this.isCartLoading = true;
+  //   this.getCartItems().subscribe(res => {
+  //     if (res.type == "success"){
+  //       this.cart = res.data;
+  //       localStorage.setItem("cart_id", JSON.stringify(this.cart.id));
+  //     }
+  //   });
+  //   this.isCartLoading = false;
+  // }  
+
+  public updateCartItems(id: string){
     let cart_id = JSON.parse(localStorage.getItem("cart_id"));
     return this.httpClient.post<any>(
       this.apiURL+this.updateCartUrl, {'product_id': id, 'cart_id': cart_id}

@@ -1,5 +1,5 @@
 
-<div *ngIf="cart">
+<div *ngIf="cartService.cart">
     <table class="table cart-table">
       <thead>
         <tr>
@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody class='cart-body'>
-            <tr class='cart-product' *ngFor="let product of cart.products; let i = index">
+            <tr class='cart-product' *ngFor="let product of cartService.cart.products; let i = index">
               <th scope="row">{{ i+1 }}</th>
                 <td><a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
                     <!-- {% include 'cart/snippets/remove-product.html' with product_id=product.id %} -->
@@ -17,11 +17,11 @@
             </tr>
         <tr>
           <td colspan="2"></td>
-          <td><b>Subtotal</b> <span class='cart-subtotal'>{{ cart.subtotal }}</span></td>
+          <td><b>Subtotal</b> <span class='cart-subtotal'>{{ cartService.cart.subtotal }}</span></td>
         </tr>
         <tr>
           <td colspan="2"></td>
-          <td><b>Total</b> <span class='cart-total'>{{ cart.total }}</span></td>
+          <td><b>Total</b> <span class='cart-total'>{{ cartService.cart.total }}</span></td>
         </tr>
         <!-- <tr>
           <td colspan="2"></td>

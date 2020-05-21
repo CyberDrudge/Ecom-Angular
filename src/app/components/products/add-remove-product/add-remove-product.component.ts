@@ -8,7 +8,6 @@ import { CartService } from '../../../services/cart/cart.service';
 })
 export class AddRemoveProductComponent implements OnInit {
   @Input() product: any;
-  @Input() cartItems: any;
   isProductInCart: boolean = false;
 
   constructor(public cartService: CartService) { }
@@ -21,18 +20,18 @@ export class AddRemoveProductComponent implements OnInit {
     console.log("Updating Cart: " + id);
     this.isProductInCart = !this.isProductInCart;
     console.log(this.isProductInCart);
-    this.cartService.updateCart(id).subscribe(res => {
+    this.cartService.updateCartItems(id).subscribe(res => {
       if (res.type == 'success'){
-        localStorage.setItem("cart", JSON.stringify(res.data));
+        this.cartService.cart = res.data;
         localStorage.setItem("cart_id", JSON.stringify(res.data.id));
       }
     });
   }
 
   checkInCart(product: any){
-    if (this.cartItems.products){
-      for (let i=0; i < this.cartItems.products.length; i++){
-        if (product.id == this.cartItems.products[i].id){
+    if (this.cartService.cart.products){
+      for (let i=0; i < this.cartService.cart.products.length; i++){
+        if (product.id == this.cartService.cart.products[i].id){
           this.isProductInCart = true;
           return;
         }

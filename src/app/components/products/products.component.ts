@@ -9,14 +9,12 @@ import { CartService } from '../../services/cart/cart.service';
 })
 export class ProductsComponent implements OnInit {
   productsList: any;
-  cartItems: any;
   constructor(
       public productsService: ProductsService,
       public cartService: CartService
   ) { }
 
   ngOnInit(): void {
-    this.getCartItems();
     this.getProductsList();
   }
 
@@ -30,10 +28,6 @@ export class ProductsComponent implements OnInit {
       }
       this.productsService.isProductsLoading = false;
     });
-  }
-
-  getCartItems(){
-    this.cartItems = JSON.parse(localStorage.getItem("cart"));
   }
 
 }
