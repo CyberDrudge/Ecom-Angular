@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="register-header">
+        <h2 class="float-left my-0">REGISTER</h2>
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <input formControlName="full_name" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.full_name.errors }" type="text" required
+            placeholder="Full Name">
+        <input formControlName="email" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" type="email" required
+            placeholder="Email">
+        <input formControlName="password1" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password1.errors }" type="password" required
+            placeholder="Password">
+        <input formControlName="password2" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password2.errors && f.password1.value != f.password2.value }" type="password" required
+            placeholder="Confirm Password">
+        <div *ngIf="f.password2.errors" class="color-error animated lightSpeedIn">
+            <div *ngIf="f.password2.errors.mustMatch">Passwords must match</div>
+        </div>
+        <button class="my-1" type="submit" [disabled]="!registerForm.valid">
+            <span *ngIf="isLoading"><img class="auth_loader" src="./assets/gifs/loader2.gif"></span>
+            <span>Sign Up</span>
+        </button>
+    </form>
+    <div class="mt-20 text-right secondary">
+        <p *ngIf="submitted && registerForm.invalid" class="color-error animated slideInUp">Invalid details!</p>
+    </div>
+</div>

@@ -8,6 +8,7 @@ import { LoginComponent } from './shared/login/login.component';
 import { HomeComponent } from './shared/layouts/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductDetailComponent } from './components/products/product-detail/product-detail.component';
+import { RegisterComponent } from './shared/register/register.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: "products/:slug",
     component: ProductDetailComponent
+  },
+  {
+    path: "register",
+    component: RegisterComponent
   }
 ];
 

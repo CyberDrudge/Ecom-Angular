@@ -7,12 +7,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './layouts/home/home.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserAnimationsModule,

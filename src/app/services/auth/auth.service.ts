@@ -11,7 +11,7 @@ import { environment } from "src/environments/environment";
 })
 export class AuthService {
   apiURL: string = environment.apiUrl;
-
+  registerURL: string = "/register"
   authState: any = null;
   isAdmin: Subject<boolean> = new Subject<boolean>();
   currentUserSubject: BehaviorSubject<any>;
@@ -60,6 +60,13 @@ export class AuthService {
       });
   }
 
+  register(data){
+    localStorage.clear();
+    return this.httpClient.post<any>(
+      this.apiURL + this.registerURL, data
+    )
+  }
+
   // createProfile(usercreds) {
   //   // let user: UserDetails;
   //   // Object.keys(usercreds).map( (index) => {
@@ -76,34 +83,6 @@ export class AuthService {
   //   })
   //   this.authUser();
   //   this.openDashBoard();
-  // }
-
-  // register(usercreds) {
-  //   try {
-  //     this.apiService
-  //       .register(
-  //         usercreds.login,
-  //         usercreds.password,
-  //         usercreds.first_name,
-  //         usercreds.last_name
-  //       )
-  //       .subscribe(res => {
-  //         if (res.type == "success") {
-  //           this.toast.create("success", `Registered! ${res.message}`);
-  //           this.isLoginVisible = true;
-  //           this.isRegisterVisible = false;
-  //         } else {
-  //           this.toast.create("error", `Error! ${res.message}`);
-  //           this.authState = null;
-  //           this.currentUserSubject.next(null);
-  //         }
-  //       });
-  //   } catch (err) {
-  //     console.log(err)
-  //     this.toast.create("error", `Failed: ${err.message}`);
-  //     this.authState = null;
-  //     this.currentUserSubject.next(null);
-  //   }
   // }
 
 
