@@ -8,10 +8,40 @@ body {
     background: rgba(0, 118, 197, 0.315);
     color: $primary;
 }
+
 .color-error{
     color: $error;
 }
+
 .secondary{
     color: $secondary;
 }
 
+.info-10 {
+    color: #7b7575;
+    font-size: 10em;
+}
+
+.info-0-7 {
+    font-size: 0.7em;
+}
+
+.info-1 {
+    font-size: 1em;
+}
+
+.info-1-5 {
+    font-size: 1.5em;
+}
+
+.info-2 {
+    font-size: 2em;
+}
+
+.info-2-5 {
+    font-size: 2.5em;
+}
+
+.mr-30{
+    margin-right: 30px;
+}
