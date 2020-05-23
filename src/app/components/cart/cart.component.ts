@@ -10,18 +10,7 @@ export class CartComponent implements OnInit {
 
   constructor(public cartService: CartService) { }
 
-  ngOnInit(): void {
-    this.getCartItems();
+  ngOnInit(): void { 
+    this.cartService.getCart();
   }
-
-  getCartItems(){
-    this.cartService.getCartItems().subscribe(res => {
-      if (res.type == 'success'){
-        this.cartService.cart = res.data;
-      }
-      localStorage.setItem("cart_id", JSON.stringify(this.cartService.cart.id));
-      this.cartService.isCartLoading = false;
-    })
-  }
-
 }
