@@ -19,7 +19,6 @@ export class AddRemoveProductComponent implements OnInit {
   updateCart(id?: string){
     console.log("Updating Cart: " + id);
     this.isProductInCart = !this.isProductInCart;
-    console.log(this.isProductInCart);
     this.cartService.updateCartItems(id).subscribe(res => {
       if (res.type == 'success'){
         this.cartService.cart = res.data;
