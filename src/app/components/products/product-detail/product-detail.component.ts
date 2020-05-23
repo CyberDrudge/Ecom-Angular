@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ProductsService } from '../../../services/products/products.service';
@@ -9,10 +9,13 @@ import {map} from "rxjs/operators"
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss']
 })
-export class ProductDetailComponent implements OnInit {
+
+export class ProductDetailComponent implements OnInit, OnDestroy {
   productDetails: any;
   details$: any = [];
   slug: any;
+  subscriptions: any = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -26,15 +29,19 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
-getProductDetails(slug){
-  this.productsService.getProductDetails(slug).subscribe(res => {
-    if (res.data){
-      this.productDetails = res.data;
-      console.log(this.productDetails);
-    } else{
-      this.productDetails = null;
-    }
-  })
-}
+  getProductDetails(slug){
+    this.subscriptions.push(this.productsService.getProductDetails(slug).subscribe(res => {
+      if (res.data){
+        this.productDetails = res.data;
+        console.log(this.productDetails);
+      } else{
+        this.productDetails = null;
+      }
+    }));
+  }
+
+  ngOnDestroy(){
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
 
 }
