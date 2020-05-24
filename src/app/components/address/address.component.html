@@ -1,56 +1,58 @@
-
-<div class='row'>
-<div class='col-12'>
-<h1>Addresses <small text-align="right"><a routerLink="/address/add" routerLinkActive="active">Add a New Address</a></small></h1>
-<hr/>
-</div>
+<div class="container">
+<div class='info-2-5'>Addresses 
+    <button class="btn btn-primary float-right add-new" routerLink="/address/add" routerLinkActive="active">Add a New Address</button>
+    <hr/>
 </div>
 <form action="submit" (ngSubmit)="onSubmit()">
     <div class="row">
-    <div class="col-6">
-    <h5>Select Billing Address</h5>
-    <ng-container *ngFor="let address of addresses; let i=index">
-        <div class='col-12 col-md-3 my-3'>
-            <input type="radio" [(ngModel)]="billing_address" name="billing_address" value="{{ i }}">
-            <div class="card">
-                <div class="card-body">
-                <h4 class="card-title">{{ address.address_line1 }}</h4>
-                    <!-- <small>{{ obj.get_address_type_display }}</small><br/> -->
-                    <!-- <small>{{ obj.get_address_type_display }}</small><br/> -->
-                    <br/>
-                    <h5>Address</h5>
-                    <!-- {{ address.get_address }} -->
-    
-                <!-- <a href='{{ obj.get_absolute_url }}' class='btn btn-default'>Edit</a> -->
-                </div>
-            </div>
-        </div>
-    <!-- {% empty %}
-        <p class='lead text-center'><a href='{% url "address-create" %}'>Create New</a></p> -->
-    </ng-container>
-    </div>
-    <div class="col-6">
-        <h5>Select Shipping Address</h5>
-        <ng-container *ngFor="let address of addresses; let i=index">
-            <div class='col-12 col-md-3 my-3'>
-                <input type="radio" [(ngModel)]="shipping_address" name="shipping_address" value="{{ i }}">
-                <div class="card">
-                    <div class="card-body">
-                    <h4 class="card-title">{{ address.address_line1 }}</h4>
-                        <!-- <small>{{ obj.get_address_type_display }}</small><br/> -->
-                        <!-- <small>{{ obj.get_address_type_display }}</small><br/> -->
-                        <br/>
-                        <h5>Address</h5>
-                        <!-- {{ address.get_address }} -->
-        
-                    <!-- <a href='{{ obj.get_absolute_url }}' class='btn btn-default'>Edit</a> -->
+        <div class="col-6">
+            <div class="info-1-5">Select Billing Address</div>
+            <ng-container *ngFor="let address of addresses; let i=index">
+                <div class='row'>
+                    <div class="col-1">
+                        <input type="radio" [(ngModel)]="billing_address" name="billing_address" value="{{ i }}">
+                    </div>
+                    <div class="card address-card">
+                        <div class="card-body">
+                        <h4 class="card-title">{{ address.address_line1 }}</h4>
+                            <!-- <small>{{ obj.get_address_type_display }}</small><br/> -->
+                            <!-- <small>{{ obj.get_address_type_display }}</small><br/> -->
+                            <br/>
+                            <!-- {{ address.get_address }} -->
+            
+                        <!-- <a href='{{ obj.get_absolute_url }}' class='btn btn-default'>Edit</a> -->
+                        </div>
                     </div>
                 </div>
-            </div>
-        <!-- {% empty %}
-            <p class='lead text-center'><a href='{% url "address-create" %}'>Create New</a></p> -->
-        </ng-container>
+            <!-- {% empty %}
+                <p class='lead text-center'><a href='{% url "address-create" %}'>Create New</a></p> -->
+            </ng-container>
+        </div>
+
+        <div class="col-6">
+            <div class="info-1-5">Select Shipping Address</div>
+            <ng-container *ngFor="let address of addresses; let i=index">
+                <div class='row'>
+                    <div class="col-1">
+                        <input type="radio" [(ngModel)]="shipping_address" name="shipping_address" value="{{ i }}">
+                    </div>
+                    <div class="card address-card">
+                        <div class="card-body">
+                        <h4 class="card-title">{{ address.address_line1 }}</h4>
+                            <!-- <small>{{ obj.get_address_type_display }}</small><br/> -->
+                            <!-- <small>{{ obj.get_address_type_display }}</small><br/> -->
+                            <br/>
+                            <!-- {{ address.get_address }} -->
+            
+                        <!-- <a href='{{ obj.get_absolute_url }}' class='btn btn-default'>Edit</a> -->
+                        </div>
+                    </div>
+                </div>
+            <!-- {% empty %}
+                <p class='lead text-center'><a href='{% url "address-create" %}'>Create New</a></p> -->
+            </ng-container>
         </div>
     </div>
-    <button type="submit">Select Addresses</button>
+    <div class="text-center"><button class="btn btn-primary select-address" type="submit">Select Addresses</button></div>
 </form>
+</div>
