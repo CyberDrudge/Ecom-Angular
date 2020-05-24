@@ -1,18 +1,37 @@
 <ng-container  *ngIf="!isCheckoutDone else checkoutDone">
-    <h1>Finalize Checkout</h1>
-    <p>Cart Items: 
-        <ng-container *ngFor="let product of checkoutDetails.cart.products">
-            {{ product }}
-        </ng-container>
-    </p>
-    <p>Shipping Address: {{ checkoutDetails.shipping_address.address_line1 }}</p>
-    <p>Billing Address: {{ checkoutDetails.shipping_address.address_line1 }}</p>
-    <!-- <p>Payment Method: {{ billing_profile.default_card }} (<a href="{{ billing_profile.get_payment_method_url }}?next={{ request.build_absolute_uri }}">Change</a>)</p> -->
-    <p>Cart Total: {{ checkoutDetails.cart.total }}</p>
-    <p>Shipping Total: {{ checkoutDetails.shipping_total }}</p>
-    <p>Order Total: {{ checkoutDetails.total }}</p>
+    <ng-container *ngIf="checkoutDetails">
+    <div class="container">
+        <div class="info-2">Finalize Checkout</div>
+        <div class="info-1-5 my-3 checkout">
+            <div>Cart Items: </div>
+            <div class="checkout-value checkout-cart-item">
+                <ol>
+                <li *ngFor="let product of checkoutDetails.cart.products">
+                    {{ product.title }}
+                </li>
+                </ol>
+            </div>
 
-    <button class='btn btn-success' (click)=(checkout())>Checkout</button>
+            <div class="checkout-address">Shipping Address: </div>
+            <div class="checkout-value">{{ checkoutDetails.shipping_address?.address_line1 }}</div>
+            
+            <div class="checkout-address">Billing Address: </div>
+            <div class="checkout-value">{{ checkoutDetails.shipping_address?.address_line1 }}</div>
+
+            <!-- <div>Payment Method: {{ billing_profile.default_card }} (<a href="{{ billing_profile.get_payment_method_url }}?next={{ request.build_absolute_uri }}">Change</a>)</div> -->
+            
+            <div>Cart Total: </div>
+            <div class="checkout-value">{{ checkoutDetails.cart.total }}</div>
+
+            <div>Shipping Total: </div>
+            <div class="checkout-value">{{ checkoutDetails.shipping_total }}</div>
+
+            <div>Order Total: </div>
+            <div class="checkout-value">{{ checkoutDetails.total }}</div>
+        </div>
+        <button class='btn btn-primary' (click)=(checkout())>Checkout</button>
+    </div>
+    </ng-container>
 </ng-container>
 
 <ng-template #checkoutDone>
