@@ -1,52 +1,34 @@
-<form *ngIf="addressForm"  [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-    <h5>Add an Address</h5>
-    <div class="row">
-        <div class="col-md-12">&nbsp;</div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">&nbsp;</div>
-    </div>
-    <div class="row required-field">
-        <div class="col-md-4">
-            <label class="cus-form-label">Name</label>
-            <input class="form-control minimal" id="name" formControlName="name">
+<form *ngIf="addressForm"  [formGroup]="addressForm" (ngSubmit)="onSubmit()" class="container">
+    <div class="info-2-5">Add Your Address</div>
+    <div class="secondary">
+        <div class="required-field form-item">
+            <label>Name: </label>
+            <input class="form-control form-input" id="name" formControlName="name">
+        </div>
+        <div class="required-field form-item">
+            <label class="cus-form-label">Address Line 1:</label>
+            <input class="form-control form-input" id="address_line1" formControlName="address_line1">
+        </div>
+        <div class="form-item">
+            <label class="cus-form-label">Address Line 2:</label>
+            <input class="form-control form-input" id="address_line2" formControlName="address_line2">
+        </div>
+        <div class="form-item">
+            <label class="cus-form-label">City:</label>
+            <input class="form-control form-input" id="city" formControlName="city">
+        </div>
+        <div class="form-item">
+            <label class="cus-form-label">State:</label>
+            <input class="form-control form-input" id="state" formControlName="state">
+        </div>
+        <div class="form-item">
+            <label class="cus-form-label">Country:</label>
+            <input class="form-control form-input" id="country" formControlName="country">
+        </div>
+        <div class="form-item">
+            <label class="cus-form-label">Postal Code:</label>
+            <input class="form-control form-input" id="postal_code" formControlName="postal_code">
         </div>
     </div>
-    <div class="row required-field">
-        <div class="col-md-4">
-            <label class="cus-form-label">Address Line1</label>
-            <input class="form-control minimal" id="address_line1" formControlName="address_line1">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <label class="cus-form-label">Address Line2</label>
-            <input class="form-control minimal" id="address_line2" formControlName="address_line2">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <label class="cus-form-label">City</label>
-            <input class="form-control minimal" id="city" formControlName="city">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <label class="cus-form-label">Country</label>
-            <input class="form-control minimal" id="country" formControlName="country">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <label class="cus-form-label">State</label>
-            <input class="form-control minimal" id="state" formControlName="state">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <label class="cus-form-label">Postal Code</label>
-            <input class="form-control minimal" id="postal_code" formControlName="postal_code">
-        </div>
-    </div>
-    <button type="submit" [disabled]="!addressForm.valid">Save</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!addressForm.valid">Save</button>
 </form>
