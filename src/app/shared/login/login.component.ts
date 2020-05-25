@@ -35,6 +35,8 @@ export class LoginComponent implements OnInit {
     if (this.isLoggingIn) return;
     this.isLoggingIn = true;
     await this.auth.login(this.loginForm.value);
+    this.isLoggingIn = false;
+    
   }
 
 }

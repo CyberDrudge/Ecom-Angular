@@ -17,27 +17,28 @@
           <span class='navbar-cart-count'></span> Cart
         </a>
       </li>
-
-      <li class="nav-item dropdown" dropdown *ngIf="auth.authState">
-        <a class="nav-link dropdown-toggle" dropdownToggle href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Account </a>
+    </ul>
+    <ul class="navbar-nav account-wrap" *ngIf="auth.isLoggedIn">
+      <li class="nav-item dropdown" dropdown>
+        <div class="nav-link dropdown-toggle account-drop" dropdownToggle id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Account </div>
         <div class="dropdown-menu" *dropdownMenu aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" >Home</a>
-          <a class="dropdown-item" >Billing</a>
-          <a class="dropdown-item" >Preferences</a>
-          <a class="dropdown-item" >History</a>
+          <a class="dropdown-item">Home</a>
+          <a class="dropdown-item">Billing</a>
+          <a class="dropdown-item">Preferences</a>
+          <a class="dropdown-item">History</a>
           <div class="dropdown-divider"></div>
-          <a class="nav-link" >Logout</a>
+          <a class="dropdown-item" routerLink="/" (click)="logout()" >Logout</a>
         </div>
       </li>
     </ul>
-      <ul class="navbar-nav navbar-right">
-        <li class="nav-item" >
+      <ul class="navbar-nav navbar-right" *ngIf="!auth.isLoggedIn">
+        <li class="nav-item">
           <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
         </li>
-        <li class="nav-item" >
+        <li class="nav-item">
           <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
         </li>
-    </ul>
+      </ul>
   </div>
 </nav>

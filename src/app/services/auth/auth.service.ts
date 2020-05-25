@@ -13,6 +13,7 @@ export class AuthService {
   apiURL: string = environment.apiUrl;
   registerURL: string = "/register"
   authState: any = null;
+  isLoggedIn: boolean = false;
   isAdmin: Subject<boolean> = new Subject<boolean>();
   currentUserSubject: BehaviorSubject<any>;
   public redirectUrl: string = "";
@@ -46,6 +47,7 @@ export class AuthService {
           // this.toast.create("success", `Logged in`);
           this.authState = res.data;
           console.log(res.data);
+          this.isLoggedIn = true;
           localStorage.setItem("user", JSON.stringify(res.data.token));
           this.currentUserSubject.next(res.data);
           if(this.redirectUrl) {
