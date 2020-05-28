@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import {Router} from "@angular/router"
+import { Router } from "@angular/router"
 import { AddressService } from 'src/app/services/address/address.service';
 
 @Component({
@@ -8,10 +8,11 @@ import { AddressService } from 'src/app/services/address/address.service';
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.scss']
 })
-export class AddressComponent implements OnInit {
+export class AddressComponent implements OnInit, OnDestroy {
   addresses: any;
   billing_address: any;
   shipping_address: any;
+  subscriptions: any = [];
 
   addressForm = this.fb.group({
     address: ['', [Validators.required]]
@@ -28,13 +29,13 @@ export class AddressComponent implements OnInit {
   }
 
   getAddresses(){
-    this.addressService.getAddresses().subscribe(res => {
+    this.subscriptions.push(this.addressService.getAddresses().subscribe(res => {
       if (res.type == "success"){
         this.addresses = res.data;
       } else {
         this.addresses = null;
       }
-    });
+    }));
   }
 
   onSubmit(){
@@ -45,4 +46,9 @@ export class AddressComponent implements OnInit {
     localStorage.setItem("shipping_address", JSON.stringify(shipping_address));
     this.router.navigate(['/checkout']);
   }
+
+  ngOnDestroy(){
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
 }
